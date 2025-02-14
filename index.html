@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passo a Passo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #1A237E, #283593, #3949AB); /* Tons de azul do site Evolução Auditoria */
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            background: #FF9800; /* Cor laranja para destacar botões */
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        .description {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+        .description a {
+            color: #1A237E;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="step-title">Passo 1</h2>
+        <p class="description" id="step-description">Acesse a área do investidor na B3 pelo link <a href="https://www.investidor.b3.com.br" target="_blank">www.investidor.b3.com.br</a> e clique em "Saiba mais" na opção da Calculadora Revar.</p>
+        <img id="step-image" src="imagem2.jpeg" alt="Passo 1">
+        <div class="buttons">
+            <button id="prev" onclick="changeStep(-1)" disabled>Anterior</button>
+            <button id="next" onclick="changeStep(1)">Próximo</button>
+        </div>
+    </div>
+    
+    <script>
+        const steps = [
+            { title: "Passo 1", image: "imagem2.jpeg", description: "Acesse a área do investidor na B3 pelo link <a href=\"https://www.investidor.b3.com.br\" target=\"_blank\">www.investidor.b3.com.br</a> e clique em \"Saiba mais\" na opção da Calculadora Revar." },
+            { title: "Passo 2", image: "imagem3.jpeg", description: "Agora, vincule a Calculadora Revar." },
+            { title: "Passo 3", image: "imagem4.jpeg", description: "Revise atentamente as informações fornecidas antes de prosseguir." },
+            { title: "Passo 4 (Finalização)", image: "imagem1.jpeg", description: "Ao concluir o processo aguarde a atualização pela Receita Federal." }
+        ];
+        
+        let currentStep = 0;
+        
+        function changeStep(direction) {
+            currentStep += direction;
+            document.getElementById("step-title").innerText = steps[currentStep].title;
+            document.getElementById("step-description").innerHTML = steps[currentStep].description;
+            document.getElementById("step-image").src = steps[currentStep].image;
+            
+            document.getElementById("prev").disabled = currentStep === 0;
+            document.getElementById("next").disabled = currentStep === steps.length - 1;
+        }
+    </script>
+</body>
+</html>
